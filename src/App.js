@@ -6,7 +6,13 @@ import InscriptionsTable from './InscriptionsTable.js';
 function App() {
   const [entries, addEntry] = useState([]);
   const generateData = () => {
-    fetch ("http://localhost:3001/datos")
+    let fetchURL = "";
+    if (process.env.NODE_ENV === "development") {
+      fetchURL = "http://localhost:3001/datos"
+    } else {
+      fetchURL = "/datos"
+    }
+    fetch (fetchURL)
     .then(response => response.json())  
     .then(data => 
       addEntry(data)

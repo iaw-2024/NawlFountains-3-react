@@ -13,10 +13,6 @@ app.get("/datos", (req, res) => {
     res.sendFile(path.join(process.cwd(),"private","datos.json"));
 });
 
-app.get("/test", (req, res) => {
-    console.log("TEST")
-});
-
 app.listen(3001, () => console.log("Server ready on port 3001."));
 
 module.exports = app;
