@@ -6,16 +6,11 @@ import InscriptionsTable from './InscriptionsTable.js';
 function App() {
   const [entries, addEntry] = useState([]);
   const generateData = () => {
-    // TODO retrive data from datos.json and set it to entries
-      const test = {
-          name: 'test',
-          dni: '12345678Z',
-          lu: '12345678Z',
-          email: 'test@me.com',
-          date: '2022-01-01'
-      }
-      const newEntry = test;
-      addEntry([...entries, newEntry]);
+    fetch ("http://localhost:3001/datos")
+    .then(response => response.json())  
+    .then(data => 
+      addEntry(data)
+    )
   }
 
   return (
